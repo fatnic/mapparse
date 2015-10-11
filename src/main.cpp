@@ -4,7 +4,7 @@
 int main()
 {
     MapParse mp;
-    mp.load("assets/mapfile.json");
+    mp.load("assets/map.json");
 
     sf::RenderWindow window(sf::VideoMode(mp.getMapSize().x, mp.getMapSize().y), "GameWindow");
     
@@ -18,6 +18,7 @@ int main()
         }
 
         window.clear(sf::Color(64,64,64));
+        mp.draw(&window);
         window.display();
     }
     return 0;
