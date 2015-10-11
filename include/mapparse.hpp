@@ -11,16 +11,18 @@ public:
     ~MapParse();
     void load(const std::string filename);
     sf::Vector2i getMapSize();
-    void draw(sf::RenderWindow* window);
+    sf::RectangleShape renderMap();
 private:
     void generateTexture();
     std::string _tilesetImage;
+
     sf::Vector2i _tile;
     sf::Vector2i _tiles;
     sf::Vector2i _map;
     sf::Vector2i _tileset;
 
     sf::Texture* _texture;
+    sf::RectangleShape* _bg;
     std::vector<int> _tiledata;
 };
 

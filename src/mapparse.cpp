@@ -55,8 +55,6 @@ void MapParse::generateTexture()
         int sx = ((_tiledata[i]-1) % _tileset.x) * _tile.x;
         int sy = ((_tiledata[i]-1) / _tileset.y) * _tile.y;
 
-        std::cout << _tiledata[i] << ": " << sx << ":" << sy << std::endl;
-
         imgTile.copy(imgTileset, 0, 0, sf::IntRect(sx, sy, _tile.x, _tile.y), false);
 
         int tx = (i % _tiles.x) * _tile.x;
@@ -64,15 +62,16 @@ void MapParse::generateTexture()
 
         _texture->update(imgTile, tx, ty);
     }
+
+    _bg = new sf::RectangleShape();
+    _bg->setSize(sf::Vector2f(_map.x, _map.y));
+    _bg->setTexture(_texture);
+
 }
 
-void MapParse::draw(sf::RenderWindow* window)
+sf::RectangleShape MapParse::renderMap()
 {
-    sf::RectangleShape bg;
-    bg.setSize(sf::Vector2f(_map.x, _map.y));
-    bg.setTexture(_texture);
-    
-    window->draw(bg);
+    return *_bg;    
 }
 
 MapParse::~MapParse()
