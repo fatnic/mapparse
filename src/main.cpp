@@ -1,9 +1,13 @@
 #include <SFML/Graphics.hpp>
+#include "mapparse.hpp"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "GameWindow");
+    MapParse mp;
+    mp.load("assets/mapfile.json");
 
+    sf::RenderWindow window(sf::VideoMode(mp.getMapSize().x, mp.getMapSize().y), "GameWindow");
+    
     while(window.isOpen())
     {
         sf::Event event;
